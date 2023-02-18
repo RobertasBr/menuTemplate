@@ -10,30 +10,48 @@ namespace menuTemplate
         }
         static void menuChoice()
         {
-            Console.WriteLine("MENU: Select items 1-3");
+            bool userDone = true;
 
-            string choice = Console.ReadLine();
-            int.TryParse(choice, out int choices);
+            while (userDone) {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("MENU:");
+                Console.WriteLine("1 - Option One");
+                Console.WriteLine("2 - Option Two");
+                Console.WriteLine("3 - Option Three");
+                Console.Write("0 - To Exit: ");
 
-            switch (choices)
-            {
-                case 1:
-                    Console.WriteLine("Item one");
-                    //Method one goes here
-                    break;
-                case 2:
-                    Console.WriteLine("Item two");
-                    //Method two goes here
-                    break;
-                case 3:
-                    Console.WriteLine("Item three");
-                    //Method three goes here, can keep adding cases if needed
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice, try again!");
-                    //Error message
-                    break;
+
+                string choice = Console.ReadLine();
+                char.TryParse(choice, out char choices);
+
+                switch (choices)
+                {
+                    case '0':
+                        userDone = false;
+                        break;
+                    case '1':
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Item one\n");
+                        //Method one goes here
+                        break;
+                    case '2':
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Item two\n");
+                        //Method two goes here
+                        break;
+                    case '3':
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Item three\n");
+                        //Method three goes here, can keep adding cases if needed
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Invalid choice\n");
+                        //Error message
+                        continue;
+                }
             }
+            return;
         }
     }
 }
